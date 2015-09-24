@@ -42,6 +42,8 @@ Start server:
 
     vagrant ssh front
     cd front
+    bower install
+    npm install
     gulp serve
 
 URL
