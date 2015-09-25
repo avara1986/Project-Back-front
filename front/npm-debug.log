@@ -1,0 +1,167 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', '-g', 'gulp-size' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.40
+4 verbose node symlink /usr/bin/node
+5 verbose cache add [ 'gulp-size', null ]
+6 verbose cache add name=undefined spec="gulp-size" args=["gulp-size",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: 'gulp-size',
+7 verbose parsed url   path: 'gulp-size',
+7 verbose parsed url   href: 'gulp-size' }
+8 silly lockFile 7b735e53-gulp-size gulp-size
+9 verbose lock gulp-size /home/vagrant/.npm/7b735e53-gulp-size.lock
+10 silly lockFile 7b735e53-gulp-size gulp-size
+11 silly lockFile 7b735e53-gulp-size gulp-size
+12 verbose addNamed [ 'gulp-size', '' ]
+13 verbose addNamed [ null, '*' ]
+14 silly lockFile 5fda1cdf-gulp-size gulp-size@
+15 verbose lock gulp-size@ /home/vagrant/.npm/5fda1cdf-gulp-size.lock
+16 silly addNameRange { name: 'gulp-size', range: '*', hasData: false }
+17 verbose request where is /gulp-size
+18 verbose request registry https://registry.npmjs.org/
+19 verbose request id 94cc02e7d56733c3
+20 verbose url raw /gulp-size
+21 verbose url resolving [ 'https://registry.npmjs.org/', './gulp-size' ]
+22 verbose url resolved https://registry.npmjs.org/gulp-size
+23 verbose request where is https://registry.npmjs.org/gulp-size
+24 info trying registry request attempt 1 at 15:48:25
+25 verbose etag "60AHHV22IID8QY9O9WK4NDTWE"
+26 http GET https://registry.npmjs.org/gulp-size
+27 http 304 https://registry.npmjs.org/gulp-size
+28 silly registry.get cb [ 304,
+28 silly registry.get   { date: 'Thu, 24 Sep 2015 15:48:25 GMT',
+28 silly registry.get     via: '1.1 varnish',
+28 silly registry.get     'cache-control': 'max-age=60',
+28 silly registry.get     etag: '"60AHHV22IID8QY9O9WK4NDTWE"',
+28 silly registry.get     age: '0',
+28 silly registry.get     connection: 'keep-alive',
+28 silly registry.get     'x-served-by': 'cache-fra1235-FRA',
+28 silly registry.get     'x-cache': 'HIT',
+28 silly registry.get     'x-cache-hits': '1',
+28 silly registry.get     'x-timer': 'S1443109705.440029,VS0,VE101',
+28 silly registry.get     vary: 'Accept' } ]
+29 verbose etag https://registry.npmjs.org/gulp-size from cache
+30 silly addNameRange number 2 { name: 'gulp-size', range: '*', hasData: true }
+31 silly addNameRange versions [ 'gulp-size',
+31 silly addNameRange   [ '0.1.0',
+31 silly addNameRange     '0.1.1',
+31 silly addNameRange     '0.1.2',
+31 silly addNameRange     '0.1.3',
+31 silly addNameRange     '0.2.0',
+31 silly addNameRange     '0.3.0',
+31 silly addNameRange     '0.3.1',
+31 silly addNameRange     '0.4.0',
+31 silly addNameRange     '0.4.1',
+31 silly addNameRange     '1.0.0',
+31 silly addNameRange     '1.1.0',
+31 silly addNameRange     '1.2.0',
+31 silly addNameRange     '1.2.1',
+31 silly addNameRange     '1.2.2',
+31 silly addNameRange     '1.2.3',
+31 silly addNameRange     '1.3.0',
+31 silly addNameRange     '2.0.0' ] ]
+32 verbose addNamed [ 'gulp-size', '2.0.0' ]
+33 verbose addNamed [ '2.0.0', '2.0.0' ]
+34 silly lockFile da5160fb-gulp-size-2-0-0 gulp-size@2.0.0
+35 verbose lock gulp-size@2.0.0 /home/vagrant/.npm/da5160fb-gulp-size-2-0-0.lock
+36 silly lockFile da5160fb-gulp-size-2-0-0 gulp-size@2.0.0
+37 silly lockFile da5160fb-gulp-size-2-0-0 gulp-size@2.0.0
+38 silly lockFile 5fda1cdf-gulp-size gulp-size@
+39 silly lockFile 5fda1cdf-gulp-size gulp-size@
+40 silly resolved [ { name: 'gulp-size',
+40 silly resolved     version: '2.0.0',
+40 silly resolved     description: 'Display the size of your project',
+40 silly resolved     license: 'MIT',
+40 silly resolved     repository:
+40 silly resolved      { type: 'git',
+40 silly resolved        url: 'https://github.com/sindresorhus/gulp-size' },
+40 silly resolved     author:
+40 silly resolved      { name: 'Sindre Sorhus',
+40 silly resolved        email: 'sindresorhus@gmail.com',
+40 silly resolved        url: 'http://sindresorhus.com' },
+40 silly resolved     engines: { node: '>=0.12.0' },
+40 silly resolved     scripts: { test: 'xo && mocha' },
+40 silly resolved     files: [ 'index.js' ],
+40 silly resolved     keywords:
+40 silly resolved      [ 'gulpplugin',
+40 silly resolved        'filesize',
+40 silly resolved        'file',
+40 silly resolved        'size',
+40 silly resolved        'log',
+40 silly resolved        'measure',
+40 silly resolved        'inspect',
+40 silly resolved        'debug',
+40 silly resolved        'gzip' ],
+40 silly resolved     dependencies:
+40 silly resolved      { chalk: '^1.0.0',
+40 silly resolved        'gulp-util': '^3.0.0',
+40 silly resolved        'gzip-size': '^3.0.0',
+40 silly resolved        'pretty-bytes': '^2.0.1',
+40 silly resolved        'stream-counter': '^1.0.0',
+40 silly resolved        through2: '^2.0.0' },
+40 silly resolved     devDependencies: { mocha: '*', xo: '*' },
+40 silly resolved     xo: { env: [Object] },
+40 silly resolved     gitHead: 'b2632368a7bf75cde538f0162d38196cd2927613',
+40 silly resolved     bugs: { url: 'https://github.com/sindresorhus/gulp-size/issues' },
+40 silly resolved     homepage: 'https://github.com/sindresorhus/gulp-size',
+40 silly resolved     _id: 'gulp-size@2.0.0',
+40 silly resolved     _shasum: '5076026d285ffaa04dc8fa90445a0b3e3653d134',
+40 silly resolved     _from: 'gulp-size@',
+40 silly resolved     _npmVersion: '2.11.2',
+40 silly resolved     _nodeVersion: '0.12.5',
+40 silly resolved     _npmUser: { name: 'sindresorhus', email: 'sindresorhus@gmail.com' },
+40 silly resolved     dist:
+40 silly resolved      { shasum: '5076026d285ffaa04dc8fa90445a0b3e3653d134',
+40 silly resolved        tarball: 'http://registry.npmjs.org/gulp-size/-/gulp-size-2.0.0.tgz' },
+40 silly resolved     maintainers: [ [Object] ],
+40 silly resolved     directories: {},
+40 silly resolved     _resolved: 'https://registry.npmjs.org/gulp-size/-/gulp-size-2.0.0.tgz',
+40 silly resolved     readme: 'ERROR: No README data found!' } ]
+41 info install gulp-size@2.0.0 into /usr/lib
+42 info installOne gulp-size@2.0.0
+43 warn engine gulp-size@2.0.0: wanted: {"node":">=0.12.0"} (current: {"node":"0.10.40","npm":"1.4.28"})
+44 verbose lib/node_modules/gulp-size unbuild
+45 verbose tar unpack /home/vagrant/.npm/gulp-size/2.0.0/package.tgz
+46 silly lockFile e9bbd2dc-r-usr-lib-node-modules-gulp-size tar:///usr/lib/node_modules/gulp-size
+47 verbose lock tar:///usr/lib/node_modules/gulp-size /home/vagrant/.npm/e9bbd2dc-r-usr-lib-node-modules-gulp-size.lock
+48 silly lockFile 87a1f85d--npm-gulp-size-2-0-0-package-tgz tar:///home/vagrant/.npm/gulp-size/2.0.0/package.tgz
+49 verbose lock tar:///home/vagrant/.npm/gulp-size/2.0.0/package.tgz /home/vagrant/.npm/87a1f85d--npm-gulp-size-2-0-0-package-tgz.lock
+50 silly gunzTarPerm modes [ '775', '664' ]
+51 error Error: EACCES, mkdir '/usr/lib/node_modules/gulp-size'
+51 error  { [Error: EACCES, mkdir '/usr/lib/node_modules/gulp-size']
+51 error   errno: 3,
+51 error   code: 'EACCES',
+51 error   path: '/usr/lib/node_modules/gulp-size',
+51 error   fstream_type: 'Directory',
+51 error   fstream_path: '/usr/lib/node_modules/gulp-size',
+51 error   fstream_class: 'DirWriter',
+51 error   fstream_stack:
+51 error    [ '/usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23',
+51 error      '/usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53',
+51 error      'Object.oncomplete (fs.js:108:15)' ] }
+52 error Please try running this command again as root/Administrator.
+53 error System Linux 3.2.0-23-generic
+54 error command "/usr/bin/node" "/usr/bin/npm" "install" "-g" "gulp-size"
+55 error cwd /vagrant/front
+56 error node -v v0.10.40
+57 error npm -v 1.4.28
+58 error path /usr/lib/node_modules/gulp-size
+59 error fstream_path /usr/lib/node_modules/gulp-size
+60 error fstream_type Directory
+61 error fstream_class DirWriter
+62 error code EACCES
+63 error errno 3
+64 error stack Error: EACCES, mkdir '/usr/lib/node_modules/gulp-size'
+65 error fstream_stack /usr/lib/node_modules/npm/node_modules/fstream/lib/dir-writer.js:36:23
+65 error fstream_stack /usr/lib/node_modules/npm/node_modules/mkdirp/index.js:46:53
+65 error fstream_stack Object.oncomplete (fs.js:108:15)
+66 verbose exit [ 3, true ]

@@ -1,0 +1,14 @@
+
+	<md-button class="md-icon-button" aria-label="Settings">
+	  <md-icon md-svg-icon="/assets/images/menu.svg"></md-icon>
+	</md-button>
+	<h2>
+	  <span class="test" ><a href="#" ui-sref="home">Pogona</a></span>
+	</h2>
+	<span flex=""></span>
+	<div ng-hide="is_login">
+	    <google-plus-signin ng-hide="is_login" clientid="428283132187-f6rvphfo8efq7lcdrqv44pgugfs38r8r" class="md-icon-button"></google-plus-signin>
+	</div>
+	<div ng-show="is_login">
+	    {{ user.email }}
+	</div>
