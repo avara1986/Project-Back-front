@@ -24,7 +24,7 @@
 
         },})
         .state('getstart', {
-        url: '/getting-started',
+        url: '/gettingstarted',
         views: {
             "header": { templateUrl: header },
             "menu": { templateUrl: menu },
@@ -43,7 +43,43 @@
                 controller: 'UserController',
                 controllerAs: 'user'
             }
-        }});
+        }})
+        .state('emailurl', {
+        url: '/email/from-url',
+        views: {
+            "header": { templateUrl: header },
+            "menu": { templateUrl: menu },
+            "content": { 
+                templateUrl: "app/user/form_url.html",
+                controller: 'EmailUrlController',
+                controllerAs: 'EmailUrl'
+            }
+
+        },})
+        .state('emailhtml', {
+        url: '/email/from-html',
+        views: {
+            "header": { templateUrl: header },
+            "menu": { templateUrl: menu },
+            "content": { 
+                templateUrl: "app/email/form_html.html",
+                controller: 'EmailHtmlController',
+                controllerAs: 'EmailHtml'
+            }
+
+        },})
+        .state('emailhistory', {
+        url: '/email/history',
+        views: {
+            "header": { templateUrl: header },
+            "menu": { templateUrl: menu },
+            "content": { 
+                templateUrl: "app/email/history.html",
+                controller: 'EmailHistoryController',
+                controllerAs: 'EmailHistory'
+            }
+
+        },});
 
     $urlRouterProvider.otherwise('/');
   }
