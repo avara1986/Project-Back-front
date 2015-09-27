@@ -1,0 +1,25 @@
+<md-content layout="column" flex class="md-padding">
+    <form id="loginForm" name="loginForm">
+    <md-input-container flex="">
+        <label>Username</label>
+        <input cc name="UserName" ng-model="user.username" required="">
+        <div ng-messages="loginForm.UserName.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
+    <md-input-container flex="">
+        <label>Password</label>
+        <input type="password" cc name="UserPassword"  ng-model="user.password" required="">
+        <div ng-messages="loginForm.UserPassword.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
+    <md-button type="button" ng-click="reset()">RESET</md-button>
+    <md-button type="submit" ng-click="submit(user)" class="md-primary" ng-disabled="loginForm.$invalid">SUBMIT</md-button>
+    <pre>user = {{user | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+    <pre>test = {{ usertest | json }}</pre>
+    <pre>moment = {{ moment }}</pre>
+    
+    </form>
+</md-content>

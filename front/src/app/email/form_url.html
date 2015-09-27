@@ -1,0 +1,32 @@
+<md-content layout="column" flex class="md-padding">
+    <h2 class="md-title">Send Email from URL</h2>
+    <form id="emailForm" name="emailForm">
+    <md-chips ng-model="EmailUrl.email.to" name="EmailTo" readonly="false" placeholder="Enter a email address" 
+    delete-button-label="Remove email address" delete-hint="Press delete to remove email address" 
+    secondary-placeholder="+Email" required></md-chips>
+    <div ng-messages="emailForm.EmailTo.$error">
+        <div ng-message="required">This is required.</div>
+    </div>
+    <md-input-container flex="">
+        <label>Subject</label>
+        <input type="text" name="EmailSubject" ng-model="EmailUrl.email.subject" required="">
+        <div ng-messages="emailForm.EmailSubject.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
+    <md-input-container flex="">
+        <label>URL</label>
+        <input type="text" name="EmailUrl" ng-model="EmailUrl.email.url" required="">
+        <div ng-messages="emailForm.EmailUrl.$error">
+            <div ng-message="required">This is required.</div>
+        </div>
+    </md-input-container>
+    <md-button type="button" ng-click="EmailUrl.reset()">RESET</md-button>
+    <md-button type="submit" ng-click="EmailUrl.submit(EmailUrl.email)" class="md-primary" ng-disabled="emailForm.$invalid">SUBMIT</md-button>
+    <!-- 
+    <pre>user = {{user | json}}</pre>
+    <pre>email = {{ EmailUrl.email | json }}</pre>
+    <pre>email = {{ EmailUrl.email.to | json }}</pre>
+    -->
+    </form>
+</md-content>
