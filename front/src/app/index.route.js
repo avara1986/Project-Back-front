@@ -50,7 +50,7 @@
             "header": { templateUrl: header },
             "menu": { templateUrl: menu },
             "content": { 
-                templateUrl: "app/user/form_url.html",
+                templateUrl: "app/email/form_url.html",
                 controller: 'EmailUrlController',
                 controllerAs: 'EmailUrl'
             }
