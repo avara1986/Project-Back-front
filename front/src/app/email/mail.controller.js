@@ -19,7 +19,7 @@
 		}
 	}
 	this.submit = function(email) {
-        $http.post(apiurl+'emails/send-url/', [email, $rootScope.user])
+        $http.post(apiurl+'emails/send-url/', {'email': email, 'g_token': $cookies.get('g_token')})
         .success(function(data) {
             console.log(data);
             $mdToast.show(
