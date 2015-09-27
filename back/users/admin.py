@@ -12,12 +12,7 @@ class UserAdmin(UserAdmin):
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
-        (_('Pitble fields'), {'fields': ('followings',)}),
+        (_('User fields'), {'fields': ('followings',)}),
     )
-
-
-class PitbleAdmin(admin.ModelAdmin):
-    list_display = ('text', 'owner')
-    search_fields = ('text',)
 
 admin.site.register(get_user_model(), UserAdmin)
