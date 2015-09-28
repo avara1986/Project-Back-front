@@ -1,7 +1,9 @@
+import urllib, json
+
 from django.contrib.auth import get_user_model, authenticate, login
+
 from rest_framework import authentication
 from rest_framework import exceptions
-import urllib, json
 
 
 class UserGoogleAuthentication(authentication.BaseAuthentication):
