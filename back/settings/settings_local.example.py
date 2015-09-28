@@ -12,4 +12,4 @@ DATABASES = {
     }
 }
 
-ES_SERVER = "s192.168.100.4:9200"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

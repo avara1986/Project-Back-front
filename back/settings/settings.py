@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-    'users'
+    'users',
+    'emails'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -125,7 +126,7 @@ AUTHENTICATION_BACKENDS = (
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'users.authentication.UserGoogleAuthentication',
+        # 'users.authentication.UserGoogleAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
