@@ -18,9 +18,12 @@ from django.contrib import admin
 from rest_framework import routers
 from rest_framework.authtoken import views
 from users.views import UserViewSet
+from emails.views import EmailViewSet, ContactViewSet
 
 router = routers.SimpleRouter()
 router.register(r'users', UserViewSet, base_name="users-api")
+router.register(r'emails', EmailViewSet, base_name="emails-api")
+router.register(r'contacts', ContactViewSet, base_name="contacts-api")
 # router.register(r'users', UserViewSet)
 # router.register(r'accounts', AccountViewSet)
 
