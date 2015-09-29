@@ -109,6 +109,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'media')
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = '/media/'
 
+EMAIL_HOST = 'smtp.we-ma.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'info@we-ma.com'
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'info@we-ma.com'
+
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
