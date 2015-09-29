@@ -21,24 +21,33 @@ def send_mail(subject, message, from_email, recipient_list, recipient_bcc_list):
 
 
 class EmailViewSet(viewsets.ModelViewSet):
+
     queryset = Email.objects.all()
     serializer_class = EmailSerializer
 
-    @detail_route(methods=['get'])
-    def sendurl(self, request, pk=None):
-        # import ipdb;
-        # ipdb.set_trace()
+    @list_route(methods=['post'])
+    def sendurl(self, request):
+        '''
+        Example data:
+        {
+            "url": "http://design.gobalo.es/newsletters/google/partners_producto/agosto/index.html",
+            "to": [{"email": "a.vara.1986@gmail.com"},{"email": "a.vara.1987@gmail.com"}],
+            "user": 1,
+            "subject": "Test",
+            "content": ""
+        }
+        '''
         data = request.data
         if request.method == 'GET':
             data = request.query_params
         serializer = EmailSerializer(data=data)
         if serializer.is_valid():
             email = serializer.save()
+            # SEND EMAIL:
             if email.url is not None:
                 req = urllib2.Request(email.url)
                 content = urllib2.urlopen(req).read()
-
-                recipient_list = [c.email for c in email.to]
+                recipient_list = [c.email for c in email.to.all()]
                 recipient_bcc_list = ["a.vara.1986@gmail.com", ]
 
                 send_mail(
