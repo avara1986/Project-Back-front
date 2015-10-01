@@ -9,6 +9,7 @@
             template: '<span></span>',
             replace: true,
             link: function (scope, element, attrs) {
+              //console.log($cookies.get('is_login');
               if($cookies.get('is_login') !== 'true'){
                   // Set class.
                   attrs.$set('class', 'g-signin');

@@ -7,10 +7,10 @@
 	</h2>
 	<span flex=""></span>
 	<div ng-controller="UserController">
-	<div ng-hide="is_login">
+	<div ng-show="user.email">
 	    <google-plus-signin ng-hide="is_login" clientid="428283132187-f6rvphfo8efq7lcdrqv44pgugfs38r8r" class="md-icon-button"></google-plus-signin>
 	</div>
-	<div ng-show="is_login">
+	<div ng-show="user.email">
 	    {{ user.email }}
 	</div>
 	</div>
