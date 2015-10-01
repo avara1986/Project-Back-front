@@ -34,12 +34,14 @@ class EmailViewSet(viewsets.ModelViewSet):
             "to": [{"email": "a.vara.1986@gmail.com"},{"email": "a.vara.1987@gmail.com"}],
             "user": 1,
             "subject": "Test",
-            "content": ""
+            "content": "",
+            "g_token": "",
         }
         '''
         data = request.data
         if request.method == 'GET':
             data = request.query_params
+        data.update({'user':request.user.id})
         serializer = EmailSerializer(data=data)
         if serializer.is_valid():
             email = serializer.save()
