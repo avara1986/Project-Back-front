@@ -23,6 +23,9 @@
     </md-input-container>
     <md-button type="button" ng-click="EmailUrl.reset()">RESET</md-button>
     <md-button type="submit" ng-click="EmailUrl.submit(EmailUrl.email)" class="md-primary" ng-disabled="emailForm.$invalid">SUBMIT</md-button>
+    <div ng-show="show_form_error">
+    {{ form_error_msg }}
+    </div>
     <!-- 
     <pre>user = {{user | json}}</pre>
     <pre>email = {{ EmailUrl.email | json }}</pre>
