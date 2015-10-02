@@ -1,25 +1,23 @@
-<md-content layout="column" flex class="md-padding">
-    <form id="loginForm" name="loginForm">
-    <md-input-container flex="">
-        <label>Username</label>
-        <input cc name="UserName" ng-model="user.username" required="">
-        <div ng-messages="loginForm.UserName.$error">
-            <div ng-message="required">This is required.</div>
+    <h2 class="md-title"><md-icon md-svg-icon="/assets/images/letter110.svg"></md-icon> Sending History</h2>
+    <section>
+      <md-list layout="column" layout-padding>
+      <md-list-item class="md-3-line" ng-repeat="email in emails">
+        <div class="md-list-item-text">
+          <h3>Subject: {{ email.subject }}</h3>
+          <p>to: <span ng-repeat="to in email.to">{{ to.email }}, </span></p>
+          <p>{{ email.url }}</p>
         </div>
-    </md-input-container>
-    <md-input-container flex="">
-        <label>Password</label>
-        <input type="password" cc name="UserPassword"  ng-model="user.password" required="">
-        <div ng-messages="loginForm.UserPassword.$error">
-            <div ng-message="required">This is required.</div>
-        </div>
-    </md-input-container>
-    <md-button type="button" ng-click="reset()">RESET</md-button>
-    <md-button type="submit" ng-click="submit(user)" class="md-primary" ng-disabled="loginForm.$invalid">SUBMIT</md-button>
-    <pre>user = {{user | json}}</pre>
-    <pre>master = {{master | json}}</pre>
-    <pre>test = {{ usertest | json }}</pre>
-    <pre>moment = {{ moment }}</pre>
+      </md-list-item>
+      </md-list>
+    </section>
     
-    </form>
-</md-content>
+    <md-card ng-repeat="email in emails">
+        <md-card-content>
+        <img class="pull-right" ">
+        <h3 class="md-title">{{ email.subject }}</h3>
+       <p>to: <span ng-repeat="to in email.to">{{ to.email }}, </span></p>
+        </md-card-content>
+        <div class="md-action-buttons">
+        <md-button ng-href="{{ email.url }}">Url</md-button>
+        </div>
+    </md-card>

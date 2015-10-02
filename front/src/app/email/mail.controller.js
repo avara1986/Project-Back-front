@@ -35,9 +35,11 @@
 	}
 	this.submit = function(email) {
 		$rootScope.show_form_error=false;
+		$(".page-loading").removeClass("hidden");
         $http.post(apiurl+'emails/sendurl/', this.parseData(email, $cookies.get('g_token')))
         .success(function(data) {
             console.log(data);
+            $(".page-loading").addClass("hidden");
             $mdToast.show(
           	      $mdToast.simple()
           	        .content('Email sent Ok! ;)')
@@ -50,8 +52,15 @@
             console.log(status);
             console.log(headers);
             console.log(config);
+            if(data.detail=='invalid_token'){
+                $cookies.putObject('is_login','');
+                $cookies.put('is_login',false);
+                $rootScope.form_error_msg="Tu sesión con Google ha expirado, vuelve a loguear.";
+            }else{
+                $rootScope.form_error_msg=data;
+            }
+            $(".page-loading").addClass("hidden");
             $rootScope.show_form_error=true;
-            $rootScope.form_error_msg=data;
             $mdToast.show(
             	      $mdToast.simple()
             	        .content('Backend Error!')
@@ -101,8 +110,32 @@
 	  }
   /** @ngInject */
   function EmailHistoryController($timeout, $rootScope, $http, $cookies, apiurl) {
-	$rootScope.is_login = $cookies.get('is_login');
-	//console.log($rootScope.is_login);
-	$rootScope.user = $cookies.getObject('user');
+      $http.get(apiurl+'emails/history/?g_token='+$cookies.get('g_token'))
+      .success(function(data) {
+          console.log(data);
+          $rootScope.emails = data;
+      }).
+      error(function(data, status, headers, config) {
+          console.log(data);
+          console.log(status);
+          console.log(headers);
+          console.log(config);
+          if(data.detail=='invalid_token'){
+              $cookies.putObject('is_login','');
+              $cookies.put('is_login',false);
+              $rootScope.form_error_msg="Tu Token ha expirado, vuelve a loguear con Google";
+          }else{
+              $rootScope.form_error_msg=data;
+          }
+          $(".page-loading").addClass("hidden");
+          $rootScope.show_form_error=true;
+          $rootScope.form_error_msg=data;
+          $mdToast.show(
+                    $mdToast.simple()
+                      .content('Backend Error!')
+                      .position('top right')
+                      .hideDelay(3000)
+                  );
+      });
   }
 })();
