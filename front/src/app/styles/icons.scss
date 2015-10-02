@@ -4,6 +4,34 @@
  */
 // bower:scss
 // endbower
-.test{
-    color:red;
+md-progress-linear.page-loading {
+    position: absolute;
+    z-index: 10;
+}
+md-progress-linear.page-loading .md-bar {
+  background-color: rgb(244,67,54);
+}
+md-progress-linear.page-loading .md-container {
+    top: 0px !important; 
+}
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+.devsite-user-signout-wrapper {
+  float: right;
+  margin: 2px 16px 0 0;
+  max-width: 120px;
+  text-align: right;
+}
+.devsite-user-email, .devsite-user-signout {
+  display: block;
+  color: #fff;
+  font-size: 13px;
+  line-height: 16px;
+  opacity: .7;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: opacity .2s;
+  white-space: nowrap;
 }
