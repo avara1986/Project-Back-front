@@ -1,14 +1,14 @@
-	<!-- 
-	<md-button class="" aria-label="Settings">
+	<div ng-controller="MainController">
+	<md-button hide-gt-md aria-label="Settings" ng-click="toggleLeft()">
 	   <md-icon md-svg-icon="/assets/images/menu.svg"></md-icon>
 	</md-button>
-	 -->
-	<img src="/assets/images/pogona_v1.png">
-	<h2>
+	</div>
+	<img  src="/assets/images/pogona_v1.png">
+	<h2 >
 	  <span ><a href="#" ui-sref="home">Pogona</a></span>
 	</h2>
-	<span flex=""></span>
-	<div ng-controller="UserController">
+	<span flex></span>
+	<div flex ng-controller="UserController">
 	<div ng-hide="user.email">
 	    <google-plus-signin ng-hide="is_login" clientid="428283132187-f6rvphfo8efq7lcdrqv44pgugfs38r8r" class="md-icon-button"></google-plus-signin>
 	</div>

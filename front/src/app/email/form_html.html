@@ -1,4 +1,4 @@
-    <h2 class="md-title">Send Email from URL</h2>
+    <h2 class="md-title">Send Email from HTML</h2>
     <form id="emailForm" name="emailForm" novalidate >
     <md-chips ng-model="EmailHtml.email.to" name="EmailTo" readonly="false" placeholder="Enter a email address" 
     delete-button-label="Remove email address" delete-hint="Press delete to remove email address" 
@@ -20,7 +20,7 @@
             <div ng-message="required">This is required.</div>
         </div>
     </md-input-container>
-    <div layout class="buttons-right">
+    <div layout layout-align="end center">
 	    <md-button type="button" ng-click="EmailHtml.reset()">RESET</md-button>
 	    <md-button type="button" ng-click="EmailHtml.html_preview(EmailHtml.email.html)">PREVIEW</md-button>
 	    <md-button type="submit" ng-click="EmailHtml.submit(EmailHtml.email)" class="md-primary" ng-disabled="emailForm.$invalid">SUBMIT</md-button>

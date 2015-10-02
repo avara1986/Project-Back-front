@@ -6,19 +6,23 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, $scope, webDevTec, toastr) {
-    var vm = this;
-    
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1442678867860;
-
-    activate();
-
-    function activate() {
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
+  function MainController($timeout, $scope, $mdSidenav , $mdUtil, $log, toastr) {
+    $scope.toggleLeft = buildToggler('left');
+    function buildToggler(navID) {
+        var debounceFn =  $mdUtil.debounce(function(){
+              $mdSidenav(navID)
+                .toggle()
+                .then(function () {
+                  $log.debug("toggle " + navID + " is done");
+                });
+            },200);
+        return debounceFn;
     }
+    $scope.close = function () {
+        $mdSidenav('left').close()
+          .then(function () {
+            $log.debug("close LEFT is done");
+          });
+      };
   }
 })();

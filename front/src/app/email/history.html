@@ -1,25 +1,23 @@
-    <h2 class="md-title"><md-icon md-svg-icon="/assets/images/letter110.svg"></md-icon> Sending History</h2>
-    <section>
-      <md-list layout="column" layout-padding>
-      <md-list-item class="md-3-line" ng-repeat="email in emails">
-        <div class="md-list-item-text">
-          <h3>Subject: {{ email.subject }}</h3>
-          <p>to: <span ng-repeat="to in email.to">{{ to.email }}, </span></p>
-          <p>{{ email.url }}</p>
-        </div>
-      </md-list-item>
-      </md-list>
-    </section>
     
+    <h2 class="md-title"><md-icon md-svg-icon="/assets/images/letter110.svg"></md-icon> Sending History</h2>
     <md-card ng-repeat="email in emails">
-        <md-card-content>
-        <img class="pull-right" ">
-        <h3 class="md-title">{{ email.subject }}</h3>
-       <p>to: <span ng-repeat="to in email.to">{{ to.email }}, </span></p>
-        </md-card-content>
-        <div class="md-action-buttons">
-        <md-button ng-href="{{ email.url }}">Url</md-button>
+        <md-card-content layout="row">
+        <div layout="row" layout-align="start center" hide show-gt-md flex="35" ><span ng-repeat="to in email.to" >{{ to.email }}, </span></div>
+        <div layout="row" layout-align="start center" flex="30" >{{ email.id }}# {{ email.subject }}</div>
+        <div layout="row" layout-align="start center" flex="30" flex-gt-md="20" >{{ email.created | date:"dd/MM/yyyy 'at' h:mma" }}</div>
+        <div layout="row" layout-align="start center" flex="20" >
+            <md-button ng-show="email.url"class="md-fab md-primary" aria-label="View URL" ng-href="{{ email.url }}" target="_blank">
+              <md-icon md-svg-src="/assets/images/arrow165.svg"></md-icon>
+            </md-button>
+            <md-button ng-show="email.content" class="md-fab md-primary" aria-label="View URL" ng-href="{{ email.url }}" layout-align="end center">
+              <md-icon md-svg-src="/assets/images/eye110.svg"></md-icon>
+            </md-button>
+            <md-button class="md-fab" aria-label="View URL" ng-href="{{ email.url }}" layout-align="end center">
+              <md-icon md-svg-src="/assets/images/email109.svg"></md-icon>
+            </md-button>
         </div>
+        </md-card-content>
+
     </md-card>
     <div ng-show="show_server_errors">
     {{ form_error_msg }}

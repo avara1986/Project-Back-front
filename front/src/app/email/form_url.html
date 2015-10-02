@@ -20,7 +20,7 @@
             <div ng-message="required">This is required.</div>
         </div>
     </md-input-container>
-    <div layout class="buttons-right">
+    <div layout layout-align="end center">
 	    <md-button type="button" ng-click="EmailUrl.reset()">RESET</md-button>
 	    <md-button type="submit" ng-click="EmailUrl.submit(EmailUrl.email)" class="md-primary" ng-disabled="emailForm.$invalid">SUBMIT</md-button>
     </div>
