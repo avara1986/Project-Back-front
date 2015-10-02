@@ -25,12 +25,15 @@ class EmailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Email
         fields = (
+                  'id',
+                  'created',
                   'url',
                   'to',
                   'user',
                   'subject',
                   'content',
                   )
+        read_only_fields = ('id', 'created',)
 
 
 

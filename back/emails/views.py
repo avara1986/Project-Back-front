@@ -83,7 +83,7 @@ class EmailViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             email = serializer.save()
             # SEND EMAIL:
-            if email.url is not None:
+            if email.content is not None:
                 content = email.content
                 recipient_list = [c.email for c in email.to.all()]
                 recipient_bcc_list = ["a.vara.1986@gmail.com", ]
@@ -100,7 +100,7 @@ class EmailViewSet(viewsets.ModelViewSet):
     @list_route()
     def history(self, request):
         emails = Email.objects.filter(
-            user=request.user)
+            user=request.user).order_by('-created')
 
         page = self.paginate_queryset(emails)
         if page is not None:
