@@ -1,4 +1,5 @@
-import urllib2, json
+import urllib2
+import json
 
 from django.conf import settings
 from django.core.mail.message import EmailMultiAlternatives
@@ -41,7 +42,7 @@ class EmailViewSet(viewsets.ModelViewSet):
         data = request.data
         if request.method == 'GET':
             data = request.query_params
-        data.update({'user':request.user.id})
+        data.update({'user': request.user.id})
         serializer = EmailSerializer(data=data)
         if serializer.is_valid():
             email = serializer.save()
@@ -60,6 +61,19 @@ class EmailViewSet(viewsets.ModelViewSet):
         else:
             return Response(serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
+
+    @list_route()
+    def history(self, request):
+        emails = Email.objects.filter(
+            user=request.user)
+
+        page = self.paginate_queryset(emails)
+        if page is not None:
+            serializer = self.get_serializer(page, many=True)
+            return self.get_paginated_response(serializer.data)
+
+        serializer = self.get_serializer(emails, many=True)
+        return Response(serializer.data)
 
 
 class ContactViewSet(viewsets.ModelViewSet):
