@@ -62,6 +62,41 @@ class EmailViewSet(viewsets.ModelViewSet):
             return Response(serializer.errors,
                             status=status.HTTP_400_BAD_REQUEST)
 
+    @list_route(methods=['post'])
+    def sendhtml(self, request):
+        '''
+        Example data:
+        {
+            "url": "",
+            "to": [{"email": "a.vara.1986@gmail.com"},{"email": "a.vara.1987@gmail.com"}],
+            "user": 1,
+            "subject": "Test",
+            "content": "<html><title>.....</html>",
+            "g_token": "",
+        }
+        '''
+        data = request.data
+        if request.method == 'GET':
+            data = request.query_params
+        data.update({'user': request.user.id})
+        serializer = EmailSerializer(data=data)
+        if serializer.is_valid():
+            email = serializer.save()
+            # SEND EMAIL:
+            if email.url is not None:
+                content = email.content
+                recipient_list = [c.email for c in email.to.all()]
+                recipient_bcc_list = ["a.vara.1986@gmail.com", ]
+
+                send_mail(
+                    email.subject, content, settings.EMAIL_HOST_USER, recipient_list, recipient_bcc_list)
+                return Response({'status': 'email sent'})
+            return Response(serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
+        else:
+            return Response(serializer.errors,
+                            status=status.HTTP_400_BAD_REQUEST)
+
     @list_route()
     def history(self, request):
         emails = Email.objects.filter(
