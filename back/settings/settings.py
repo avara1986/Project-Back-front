@@ -78,8 +78,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
@@ -111,7 +109,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'media')
 # Examples: "http://example.com/media/", "http://media.example.com/"
 MEDIA_URL = '/media/'
 
-EMAIL_HOST = 'smtp.we-ma.com'
+EMAIL_HOST = 'mail.we-ma.com'
 EMAIL_PORT = 25
 EMAIL_HOST_USER = 'info@we-ma.com'
 EMAIL_USE_TLS = False
