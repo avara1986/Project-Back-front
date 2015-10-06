@@ -7,7 +7,7 @@
 # you're doing.
 Vagrant.configure(2) do |config|
   config.vm.define "back" do |back|
-    back.vm.box = "hashicorp/precise64"
+    back.vm.box = "ubuntu/trusty64"
 
     back.vm.provision :shell, :path => "bootstrap_back.sh"
 
