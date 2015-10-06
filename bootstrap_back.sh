@@ -28,7 +28,12 @@ apt-get -y install nfs-common
 echo "Installing required packages for postgres.."
 apt-get -y install postgresql
 
-echo "Installing required packages for python package 'psycopg2'.."
+echo "Installing python dependencies"
+apt-get install -y build-essential binutils-doc autoconf flex bison libjpeg-dev
+apt-get install -y libfreetype6-dev zlib1g-dev libzmq3-dev libgdbm-dev libncurses5-dev
+apt-get install -y automake libtool libffi-dev curl git tmux gettext
+
+echo "Installing required packages for python ..."
 apt-get install -y python3 python3-pip python-dev python3-dev python-pip
 
 echo "Installing virtualenvwrapper from pip.."

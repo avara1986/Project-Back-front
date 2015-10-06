@@ -1,4 +1,4 @@
-import urllib2
+from urllib.request import urlopen
 import json
 
 from django.conf import settings
@@ -48,8 +48,7 @@ class EmailViewSet(viewsets.ModelViewSet):
             email = serializer.save()
             # SEND EMAIL:
             if email.url is not None:
-                req = urllib2.Request(email.url)
-                content = urllib2.urlopen(req).read()
+                content = urlopen(email.url).read()
                 recipient_list = [c.email for c in email.to.all()]
                 recipient_bcc_list = ["a.vara.1986@gmail.com", ]
 

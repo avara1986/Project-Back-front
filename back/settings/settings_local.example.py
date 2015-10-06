@@ -1,5 +1,5 @@
 # encoding: utf-8
-from settings import *
+from settings.settings import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 # Database
