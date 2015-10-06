@@ -50,6 +50,7 @@ then
 fi
 
 echo "Installing python dependencies"
+apt-get install -y libmysqlclient-dev
 apt-get install -y build-essential binutils-doc autoconf flex bison libjpeg-dev
 apt-get install -y libfreetype6-dev zlib1g-dev libzmq3-dev libgdbm-dev libncurses5-dev
 apt-get install -y automake libtool libffi-dev curl git tmux gettext
