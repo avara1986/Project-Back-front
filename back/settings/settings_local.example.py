@@ -1,22 +1,20 @@
 # encoding: utf-8
 from settings.settings import *
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
+
+DEBUG = TEMPLATE_DEBUG = True
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pogona',
         'USER': 'pogona',
-        'PASSWORD': 'test1234',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
 
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'Cerbero892'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

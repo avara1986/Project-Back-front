@@ -25,7 +25,10 @@ class UserGoogleAuthentication(authentication.BaseAuthentication):
             r = response.decode('utf-8')
             user = json.loads(r)
         except HTTPError as e:
-            raise exceptions.AuthenticationFailed(e.read())
+            response = e.read()
+            r = response.decode('utf-8')
+            result = json.loads(r)
+            raise exceptions.AuthenticationFailed(result['error'])
 
         if 'error' in user:
             raise exceptions.AuthenticationFailed(user['error'])
