@@ -1,4 +1,4 @@
-import urllib
+from urllib.request import urlopen, HTTPError
 import json
 
 from django.contrib.auth import get_user_model, authenticate, login
@@ -19,8 +19,14 @@ class UserGoogleAuthentication(authentication.BaseAuthentication):
             token = request.data['g_token']
         if token is None:
             return None
-        user = json.loads(urllib.urlopen(
-            'https://www.googleapis.com/oauth2/v1/tokeninfo?id_token=' + token).read())
+        try:
+            response = urlopen(
+                'https://www.googleapis.com/oauth2/v1/tokeninfo?id_token=' + token).read()
+            r = response.decode('utf-8')
+            user = json.loads(r)
+        except HTTPError as e:
+            raise exceptions.AuthenticationFailed(e.read())
+
         if 'error' in user:
             raise exceptions.AuthenticationFailed(user['error'])
         try:

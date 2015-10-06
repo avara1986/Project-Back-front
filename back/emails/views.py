@@ -49,6 +49,8 @@ class EmailViewSet(viewsets.ModelViewSet):
             # SEND EMAIL:
             if email.url is not None:
                 content = urlopen(email.url).read()
+                content = content.decode("utf-8")
+                content = ' '.join(content.split())
                 recipient_list = [c.email for c in email.to.all()]
                 recipient_bcc_list = ["a.vara.1986@gmail.com", ]
 
