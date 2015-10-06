@@ -25,8 +25,29 @@ easy_install -U pip
 echo "Installing required packages for NFS file sharing for vagrant.."
 apt-get -y install nfs-common
 
-echo "Installing required packages for postgres.."
-apt-get -y install postgresql
+
+##
+#   Setup the database
+##
+
+echo "Installing required packages for mysql.."
+debconf-set-selections <<< 'mysql-server mysql-server/root_password password ROOTPASSWORD'
+debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password ROOTPASSWORD'
+apt-get install -y mysql-server 2> /dev/null
+apt-get install -y mysql-client 2> /dev/null
+
+if [ ! -f /var/log/dbinstalled ];
+then
+    echo "CREATE USER 'pogona'@'localhost' IDENTIFIED BY 'test1234'" | mysql -uroot -pROOTPASSWORD
+    echo "CREATE DATABASE pogona" | mysql -uroot -pROOTPASSWORD
+    echo "GRANT ALL ON pogona.* TO 'pogona'@'localhost'" | mysql -uroot -pROOTPASSWORD
+    echo "flush privileges" | mysql -uroot -pROOTPASSWORD
+    touch /var/log/dbinstalled
+    if [ -f /vagrant/data/initial.sql ];
+    then
+        mysql -uroot -pROOTPASSWORD internal < /vagrant/data/initial.sql
+    fi
+fi
 
 echo "Installing python dependencies"
 apt-get install -y build-essential binutils-doc autoconf flex bison libjpeg-dev
@@ -38,15 +59,6 @@ apt-get install -y python3 python3-pip python-dev python3-dev python-pip
 
 echo "Installing virtualenvwrapper from pip.."
 pip install virtualenvwrapper
-
-##
-#	Setup the database
-##
-
-echo "Configuring postgres.."
-sudo -u postgres psql -c "create user vagrant with password 'vagrant';"
-sudo -u postgres psql -c "create database vagrant;"
-sudo -u postgres psql -c "grant all privileges on database vagrant to vagrant;"
 
 ##
 #	Setup virtualenvwrapper
