@@ -38,6 +38,7 @@ npm install -g karma
 npm install -g gulp-sass
 npm install -g gulp-eslint
 npm install -g gulp-autoprefixer
+npm install -g gulp-rev
 
 echo "Installing Gulp Angular Generator"
 npm install -g generator-gulp-angular
