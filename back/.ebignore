@@ -1,0 +1,40 @@
+# --- EVENTS ----
+vecommerces
+settings_local.py
+/static
+db.sqlite3
+media
+*.pyc
+.vagrant
+.tox
+.tox/*
+.coverage
+.coverage.*
+htmlcov/
+
+# -- Editores -----------------------------------------
+# vim
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# eclipse
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+.buildpath
+
