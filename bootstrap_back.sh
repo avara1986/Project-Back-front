@@ -29,7 +29,7 @@ echo "Installing required packages for postgres.."
 apt-get -y install postgresql
 
 echo "Installing required packages for python package 'psycopg2'.."
-apt-get -y install python-dev python3-dev libpq-dev
+apt-get install -y python3 python3-pip python-dev python3-dev python-pip
 
 echo "Installing virtualenvwrapper from pip.."
 pip install virtualenvwrapper
@@ -52,7 +52,7 @@ echo "source /usr/local/bin/virtualenvwrapper.sh" >> ${USER_HOME}/.bashrc
 #	Setup virtualenv
 ##
 echo "Install the virtual environment.."
-sudo su - vagrant /bin/bash -c "source /usr/local/bin/virtualenvwrapper.sh;cd ${PROJECT_DIR};mkvirtualenv --python=`which python3.3` back; deactivate;"
+sudo su - vagrant /bin/bash -c "source /usr/local/bin/virtualenvwrapper.sh;cd ${PROJECT_DIR};mkvirtualenv -p /usr/bin/python3.4 back; deactivate;"
 
 ##
 #	Setup is complete.
