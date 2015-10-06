@@ -53,8 +53,11 @@
             console.log(headers);
             console.log(config);
             if(data.detail=='invalid_token'){
-                $cookies.putObject('is_login','');
+                $cookies.putObject('user','');
+                $cookies.put('g_token','');
                 $cookies.put('is_login',false);
+                $rootScope.is_login=false;
+                $rootScope.user="";
                 $rootScope.form_error_msg="Tu sesión con Google ha expirado, vuelve a loguear.";
             }else{
                 $rootScope.form_error_msg=data;
@@ -71,7 +74,7 @@
     }
   }
   /** @ngInject */
-  function EmailHtmlController($timeout, $rootScope, $http, $cookies, $sce, apiurl) {
+  function EmailHtmlController($timeout, $rootScope, $http, $cookies, $mdToast, $sce, apiurl) {
 		this.email = {
 				to: [],
 		}
@@ -119,8 +122,11 @@
 	            console.log(headers);
 	            console.log(config);
 	            if(data.detail=='invalid_token'){
-	                $cookies.putObject('is_login','');
+	                $cookies.putObject('user','');
+	                $cookies.put('g_token','');
 	                $cookies.put('is_login',false);
+	                $rootScope.is_login=false;
+	                $rootScope.user="";
 	                $rootScope.form_error_msg="Tu sesión con Google ha expirado, vuelve a loguear.";
 	            }else{
 	                $rootScope.form_error_msg=data;
@@ -137,10 +143,12 @@
 	    }
 	  }
   /** @ngInject */
-  function EmailHistoryController($timeout, $rootScope, $http, $cookies, apiurl) {
+  function EmailHistoryController($timeout, $rootScope, $http, $cookies, $mdToast, apiurl) {
+      $(".page-loading").removeClass("hidden");
       $http.get(apiurl+'emails/history/?g_token='+$cookies.get('g_token'))
       .success(function(data) {
           console.log(data);
+          $(".page-loading").addClass("hidden");
           $rootScope.emails = data;
       }).
       error(function(data, status, headers, config) {
@@ -148,9 +156,14 @@
           console.log(status);
           console.log(headers);
           console.log(config);
+          $(".page-loading").addClass("hidden");
           if(data.detail=='invalid_token'){
-              $cookies.putObject('is_login','');
+              $cookies.putObject('user','');
+              $cookies.put('g_token','');
               $cookies.put('is_login',false);
+              $rootScope.is_login=false;
+              $rootScope.user="";
+              
               $rootScope.form_error_msg="Tu Token ha expirado, vuelve a loguear con Google";
           }else{
               $rootScope.form_error_msg=data;

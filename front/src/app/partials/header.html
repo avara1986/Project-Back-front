@@ -8,15 +8,16 @@
 	  <span ><a href="#" ui-sref="home">Pogona</a></span>
 	</h2>
 	<span flex></span>
-	<div flex ng-controller="UserController">
+	<div ng-controller="UserController">
 	<div ng-hide="user.email">
 	    <google-plus-signin ng-hide="is_login" clientid="428283132187-f6rvphfo8efq7lcdrqv44pgugfs38r8r" class="md-icon-button"></google-plus-signin>
 	</div>
-    <div class="devsite-user-signout-wrapper">
-    <a ng-show="user.email" class="devsite-user-email gc-analytics-event" href="https://myaccount.google.com/" data-label="User email" data-tooltip="{{ user.email }}" aria-label="{{ user.email }}" data-title="{{ user.email }}">
-        {{ user.email }}
-    </a>
-    <a class="devsite-user-signout gc-analytics-event" href="https://www.google.com/accounts/Logout?continue=http://192.168.100.4:3000/" data-category="Site-Wide Custom Events" data-label="Sign out button">
-            Cerrar sesión
-      </a></div>
+    <div ng-show="user.email" class="devsite-user-signout-wrapper">
+	    <a class="devsite-user-email gc-analytics-event" href="https://myaccount.google.com/" data-label="User email" data-tooltip="{{ user.email }}" aria-label="{{ user.email }}" data-title="{{ user.email }}">
+	        {{ user.email }}
+	    </a>
+	    <a class="devsite-user-signout gc-analytics-event" href="https://www.google.com/accounts/Logout?continue=http://192.168.100.4:3000/" data-category="Site-Wide Custom Events" data-label="Sign out button">
+	            Cerrar sesión
+	      </a>
+    </div>
 	</div>
