@@ -142,4 +142,5 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = (
     '192.168.100.4:3000',
+    'pogona.herokuapp.com',
 )
