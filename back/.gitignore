@@ -1,6 +1,7 @@
 # --- EVENTS ----
 vecommerces
 settings_local.py
+settings_prod.py
 /static
 db.sqlite3
 media
