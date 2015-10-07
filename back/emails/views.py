@@ -3,6 +3,7 @@ import json
 
 from django.conf import settings
 from django.core.mail.message import EmailMultiAlternatives
+from django.shortcuts import get_object_or_404
 
 from rest_framework import status
 from rest_framework import viewsets
@@ -110,6 +111,22 @@ class EmailViewSet(viewsets.ModelViewSet):
 
         serializer = self.get_serializer(emails, many=True)
         return Response(serializer.data)
+
+    @detail_route()
+    def resend(self, request, pk=None):
+        email = get_object_or_404(Email, pk=pk)
+        # SEND EMAIL:
+        if email.content is not None:
+            content = email.content
+        if email.url is not None:
+            content = urlopen(email.url).read()
+            content = content.decode("utf-8")
+            content = ' '.join(content.split())
+        recipient_list = [c.email for c in email.to.all()]
+        recipient_bcc_list = ["a.vara.1986@gmail.com", ]
+        send_mail(
+            email.subject, content, settings.EMAIL_HOST_USER, recipient_list, recipient_bcc_list)
+        return Response({'status': 'email sent'})
 
 
 class ContactViewSet(viewsets.ModelViewSet):
