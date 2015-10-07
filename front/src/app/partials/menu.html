@@ -1,29 +1,43 @@
-<ul class="docs-menu">
+<ul class="docs-menu" ng-controller="MainController">
     <li class="parent-list-item" >
         <menu-link section="section" class="ng-scope ng-isolate-scope">
-	        <md-button class="md-button md-default-theme" tabindex="0" ui-sref="getstart">
+	        <md-button class="md-button md-default-theme" tabindex="0" ui-sref="getstart" ng-click="close()">
 	        Getting Started
 	        </md-button>
         </menu-link>
     </li>
     <li class="parent-list-item" >
         <menu-link section="section" class="ng-scope ng-isolate-scope">
-            <md-button class="md-button md-default-theme" tabindex="0" ui-sref="emailurl">
+            <md-button class="md-button md-default-theme" tabindex="0" ui-sref="emailurl" ng-click="close()">
             Send email from URL
             </md-button>
         </menu-link>
     </li>
     <li class="parent-list-item" >
         <menu-link section="section" class="ng-scope ng-isolate-scope">
-            <md-button class="md-button md-default-theme" tabindex="0" ui-sref="emailhtml">
+            <md-button class="md-button md-default-theme" tabindex="0" ui-sref="emailhtml" ng-click="close()">
             Send email from HTML
             </md-button>
         </menu-link>
     </li>
     <li class="parent-list-item" >
         <menu-link section="section" class="ng-scope ng-isolate-scope">
-            <md-button class="md-button md-default-theme" tabindex="0" ui-sref="emailhistory">
+            <md-button class="md-button md-default-theme" tabindex="0" ui-sref="emailhistory" ng-click="close()">
             Sending history
+            </md-button>
+        </menu-link>
+    </li>
+    <li class="parent-list-item" >
+        <menu-link section="section" class="ng-scope ng-isolate-scope">
+            <md-button class="md-button md-default-theme" tabindex="0" ui-sref="freakcompilations" ng-click="close()">
+            Freak compilations
+            </md-button>
+        </menu-link>
+    </li>
+    <li class="parent-list-item" >
+        <menu-link section="section" class="ng-scope ng-isolate-scope">
+            <md-button class="md-button md-default-theme" tabindex="0" href="http://cssbeautifier.com" target="_blank">
+            CSS Beautifier
             </md-button>
         </menu-link>
     </li>

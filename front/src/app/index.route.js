@@ -33,6 +33,18 @@
             }
 
         },})
+        .state('freakcompilations', {
+        url: '/freakcompilations',
+        views: {
+            "header": { templateUrl: header },
+            "menu": { templateUrl: menu },
+            "content": { 
+                templateUrl: partials_folder+"freakcompilations.html",
+                controller: 'FreakController',
+                controllerAs: 'freak'
+            }
+
+        },})
         .state('login', {
         url: "/login",
         views: {
