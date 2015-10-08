@@ -1,8 +1,19 @@
     <h2 class="md-title">Send Email from URL</h2>
     <form id="emailForm" name="emailForm">
-    <md-chips ng-model="EmailUrl.email.to" name="EmailTo" readonly="false" placeholder="Enter a email address" 
+    <md-chips ng-model="EmailUrl.email.to" name="EmailTo" placeholder="Enter a email address" 
     delete-button-label="Remove email address" delete-hint="Press delete to remove email address" 
-    secondary-placeholder="+Email" required></md-chips>
+    md-require-match="false"
+    required>
+      <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText" md-items="item in querySearch(searchText)" 
+      md-item-text="item.email" placeholder="+Email">
+        <span md-highlight-text="searchText">{{item.email}}</span>
+      </md-autocomplete>
+      <md-chip-template>
+        <span>
+          <strong>{{$chip.email}}</strong>
+        </span>
+      </md-chip-template>
+    </md-chips>
     <div ng-messages="emailForm.EmailTo.$error">
         <div ng-message="required">This is required.</div>
     </div>

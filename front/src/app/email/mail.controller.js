@@ -6,7 +6,8 @@
     .controller('EmailUrlController', EmailUrlController)
     .controller('EmailHtmlController', EmailHtmlController)
     .controller('EmailHistoryController', EmailHistoryController)
-    .factory('SendEmailApiFactory', ['$rootScope','$http', '$cookies', '$mdToast', 'apiurl', SendEmailApiFactory]);
+    .factory('SendEmailApiFactory', ['$rootScope','$http', '$cookies', '$mdToast', 'apiurl', SendEmailApiFactory])
+    .factory('getContactsApiFactory', ['$rootScope', '$http', '$cookies', 'apiurl', getContactsApiFactory]);
 
   function SendEmailApiFactory($rootScope, $http, $cookies, $mdToast, apiurl) {
       var parseData = function(data){
@@ -20,7 +21,12 @@
           for (var i = 0; i < data.to.length; i++) { 
               var aux = new Object();
               console.log(data.to[i]);
-              aux.email = data.to[i];
+              if (data.to[i].email !=undefined){
+                  aux = data.to[i];
+              }else{
+                  aux.email = data.to[i];
+              }
+              
               
               ndata.to.push(aux);
           }
@@ -65,25 +71,53 @@
           });
       }
   }
-  
-  /** @ngInject */
-  function EmailUrlController(SendEmailApiFactory) {
-	this.email = {
-			to: [],
-	}
-
-	this.reset = function() {
-		this.email = {
-				to: [],
-		}
-	}
-	
-	this.submit = function(email) {
-	    SendEmailApiFactory(email, 'emails/sendurl/');
-    }
+  function getContactsApiFactory($rootScope, $http, $cookies, apiurl) {
+      return function() {
+          $rootScope.readonly = false;
+          $rootScope.selectedItem = null;
+          $rootScope.searchText = null;
+          $rootScope.querySearch = querySearch;
+          $rootScope.contacts = loadContacts();
+          function querySearch (query) {
+              var results = query ? $rootScope.contacts.filter(createFilterFor(query)) : [];
+              return results;
+          }
+          function createFilterFor(query) {
+              var lowercaseQuery = angular.lowercase(query);
+            
+              return function filterFn(contact) {
+                return (contact._loweremail.indexOf(lowercaseQuery) === 0);
+              };
+          }
+          function loadContacts() {
+              $http.get(apiurl+'contacts/?g_token='+$cookies.get('g_token')+"&user="+$cookies.getObject('user').email)
+              .success(function(data) {
+                  $rootScope.contacts = data.map(function (con) {
+                      con._loweremail = con.email.toLowerCase();
+                    return con;
+                  });
+              })
+          }
+      }
   }
   /** @ngInject */
-  function EmailHtmlController($sce, SendEmailApiFactory) {
+  function EmailUrlController(SendEmailApiFactory, getContactsApiFactory) {
+      this.email = {
+              to: [],
+      }
+
+      this.reset = function() {
+          this.email = {
+                  to: [],
+          }
+      }
+      getContactsApiFactory();
+      this.submit = function(email) {
+          SendEmailApiFactory(email, 'emails/sendurl/');
+      }
+  }
+  /** @ngInject */
+  function EmailHtmlController($sce, SendEmailApiFactory, getContactsApiFactory) {
 	this.email = {
 			to: [],
 	}
@@ -93,6 +127,7 @@
                 to: [],
         }
     }
+	getContactsApiFactory();
 	this.html_preview = function(html) {
 	    this.preview =  $sce.trustAsHtml(html);
 	}
@@ -103,7 +138,6 @@
   /** @ngInject */
   function EmailHistoryController($rootScope, $http, $cookies, $mdToast, apiurl) {
       this.resend = function(id) {
-          console.log(id)
           $(".page-loading").removeClass("hidden");
           $http.get(apiurl+'emails/'+id+'/resend?g_token='+$cookies.get('g_token')+"&user="+$cookies.getObject('user').email)
           .success(function(data) {
