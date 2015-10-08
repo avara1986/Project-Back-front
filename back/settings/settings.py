@@ -132,7 +132,8 @@ AUTHENTICATION_BACKENDS = (
 # Rest Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'users.authentication.UserGoogleAuthentication',
+        #'users.authentication.UserGoogleAuthentication',
+        'users.authentication.UserEmailAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
